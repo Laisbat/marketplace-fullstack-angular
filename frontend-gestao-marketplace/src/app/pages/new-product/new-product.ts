@@ -75,4 +75,8 @@ export class NewProduct {
 
     reader.readAsDataURL(file);
   }
+
+  cancel() {
+    this._router.navigate(['/products']);
+  }
 }

@@ -1,14 +1,16 @@
 import { Routes } from '@angular/router';
-import { Login } from './pages/login/login';
-import { Products } from './pages/products/products';
-import { Layout } from './pages/layout/layout';
-import { NewProduct } from './pages/new-product/new-product';
 import { authGuard } from './guards/auth-guard';
+import { loginAuthGuard } from './guards/login-auth-guard';
+import { Layout } from './pages/layout/layout';
+import { Login } from './pages/login/login';
+import { NewProduct } from './pages/new-product/new-product';
+import { Products } from './pages/products/products';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: Login,
+    canActivate: [loginAuthGuard],
   },
   {
     path: '',
@@ -27,11 +29,11 @@ export const routes: Routes = [
       {
         path: 'new-product',
         component: NewProduct,
-      }
+      },
     ],
   },
   {
     path: '**',
     redirectTo: '/login',
-  }
+  },
 ];
